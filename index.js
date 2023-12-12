@@ -86,4 +86,150 @@ var finances = [
     ['Jan-2017', 138230],
     ['Feb-2017', 671099],
   ];
+
+
+  // Calculating total number of months
+
+function calcuateTotalMonths(finances){
+
+  var totalMonths = finances.length;
+
+  return totalMonths;
+}
+
+// Calculating total profit
+
+function calculateTotal(finances){
+
+  // calculate number months which is the length of our data list
+  var totalMonths = calcuateTotalMonths(finances);
+
+  // loop through whole where i cumulatively add each profit value to a variable
+  var cumulativeProfitSum = 0;
+  for (var i = 0; i < totalMonths; i++) {
+
+    cumulativeProfitSum = cumulativeProfitSum + finances[i][1];
+
+  }
+  // return the final sum
+  return cumulativeProfitSum;
+
+}
+
+function calculateDifferencesBetweenYears(finances){
+  // loops throughthe proflit loss list finding the difference between each of the years and returns teh list of these differences
+
+  var differences = [];
+
+  //For Loop to Find Differences
+  for (var i = 1; i < totalMonths; i++) {
+  // substract the index directly below the current index from the current index, append to list, in the next loop  iteration shift one index up until the end of the profit list
+    var difference = finances[i][1] - finances[i - 1][1];
+    differences.push(difference);
+  }
+
+  return differences;
+}
+
+
+function addValuesInList(values_list){
+  cumlativeSum = 0;
+  for (var i = 0; i < values_list.length; i++) {
+    cumlativeSum = cumlativeSum + values_list[i];
+  }
+  return cumlativeSum;
+  }
+
+
+function calculateAverageChange(finances){
+  // Description: Calculate the mean average of all the differences between years of profit/loss
+
   
+  // Calculate the differences between all the years and store in a list
+  var differences = calculateDifferencesBetweenYears(finances);
+
+  // Add all values in the list cumulatively
+
+  var totalSumDifferences = addValuesInList(differences);
+
+  // Divide list by length of the number of values in list
+
+  var averageChange = totalSumDifferences / differences.length;
+  
+  // Return average change
+
+  return averageChange.toFixed(2);
+}
+
+  
+// Working out Greatest Increase
+
+function calculateGreatestIncrease(finances) {
+  // Find the Length of the Dataset
+  var totalMonths = finances.length;
+  
+  // For Loop to Find Differences
+  var differences = [];
+  for (var i = 1; i < totalMonths; i++) {
+    var difference = finances[i][1] - finances[i - 1][1];
+    differences.push(difference);
+  }
+  
+  // Sort the List 
+  differences.sort(function (a, b) {
+    return b - a;
+  });
+  
+  // Return the First Element
+  var greatestIncrease = differences[0];
+
+  return greatestIncrease;
+}
+
+
+// Working out Greatest Decrease
+
+function calculateGreatestDecrease(finances){
+
+// Find the Length of the Dataset
+
+  var totalMonths = finances.length;
+
+  // For Loop to Find Differences
+
+  var differences = [];
+  for (var i =  1; i < totalMonths; i++) {
+    var difference = finances[i][1] - finances[i - 1][1];
+    differences.push(difference);
+  }
+
+// Sort the List
+  differences.sort(function (a, b) {
+    return a - b;
+  });
+
+  // Return the First Element
+  var greatestDecrease = differences[0];
+
+  return greatestDecrease
+
+}
+
+
+var totalMonths = calcuateTotalMonths(finances=finances);
+console.log("Total months " + totalMonths);
+
+var total = calculateTotal(finances=finances);
+console.log("Total " + total);
+
+// var differences = calculateDifferencesBetweenYears(finances=finances)
+// console.log("differences " + differences);
+
+var averageChange = calculateAverageChange(finances=finances);
+console.log("Average Change: " + averageChange);
+
+var greatestIncrease = calculateGreatestIncrease(finances);
+console.log("Greatest Increase in Profits/Losses: $" + greatestIncrease);
+
+var greatestDecrease = calculateGreatestDecrease(finances);
+console.log("Greatest Decrease in Profits/Losses: $" + greatestDecrease);
