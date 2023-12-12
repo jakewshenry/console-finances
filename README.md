@@ -32,7 +32,7 @@ It is done when I have successfully logged the greates decrease in profits / los
 
 ## Usage
 
-Link to deployed application - 
+Link to deployed application - https://jakewshenry.github.io/console-finances/
 
  ![Screenshot of console](./assets/images/SS10.png)
 
